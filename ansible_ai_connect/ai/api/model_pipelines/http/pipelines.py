@@ -497,12 +497,12 @@ class HttpStreamingChatBotPipeline(
                             error = {
                                 "event": "error",
                                 "data": {
-                                    "response": "The response was too large to process.",
-                                    "cause": "A chatbot response event exceeded"
-                                    " the maximum supported size.",
+                                    "response": "Unable to process chatbot response",
+                                    "cause": "The response exceeded the maximum"
+                                    " supported size. Please try again.",
                                 },
                             }
-                            yield (b"data: " + json.dumps(error).encode("utf-8") + b"\n")
+                            yield (b"data: " + json.dumps(error).encode("utf-8") + b"\n\n")
                             return
                         else:
                             raise
